@@ -10,7 +10,7 @@
     include_once './controllers/controller.php';
     $db = new Database();
     $conn = $db->getConnection();
-    $controller = new Controller($db);
+    $controller = new Controller($conn);
     $versions = $controller->read();
 
     if(isset($_POST["Adicionar"])){
