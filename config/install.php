@@ -5,7 +5,7 @@ try
 {
   $dbclass = new Database(); 
   $connection = $dbclass->getConnection();
-  $sql = file_get_contents("database/db.sql"); 
+  $sql = file_get_contents("database/database.sql"); 
   $connection->exec($sql);
   echo "Database and tables created successfully!";
 }

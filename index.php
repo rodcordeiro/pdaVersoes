@@ -13,7 +13,7 @@
     $controller = new Controller($conn);
     $versions = $controller->read();
 
-    if(isset($_POST["Adicionar"])){
+    if(isset($_POST["save"])){
         $controller->id_sistema = $_POST["idSistema"];
         $controller->sistema = $_POST["nomeSistema"];
         $controller->cliente = $_POST["clienteSistema"];
@@ -39,7 +39,7 @@
             <br/>
             <input type="text" name="idSistema" id="idSistema" placeholder="Insira o id cadastrado do sistema">
             <br/>
-            <input type="submit" value="Adicionar">
+            <input type="submit" name='save' value="Adicionar">
         </form>
     </div>
     <div class="data_container">
