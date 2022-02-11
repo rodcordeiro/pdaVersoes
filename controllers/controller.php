@@ -44,12 +44,12 @@ class Controller{
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
           extract($row);
           $p = array(
-            "id_sistema" => $id_sistema;
-            "sistema" => $sistema;
-            "cliente" => $cliente;
-            "versao" => $versao;
-            "createdAt;" => $createdAt; 
-            "updatedAt" => $updatedAt;
+            "id_sistema" => $id_sistema,
+            "sistema" => $sistema,
+            "cliente" => $cliente,
+            "versao" => $versao,
+            "createdAt" => $createdAt, 
+            "updatedAt" => $updatedAt,
           );
           array_push($result, $p);
         }

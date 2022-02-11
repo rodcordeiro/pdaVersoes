@@ -1,20 +1,18 @@
 <?php
 class Database {
-
-    private $host = getenv('CONN_URI');
-    private $username = getenv('CONC_MYSQL_USER');
-    private $password = getenv('CONC_MYSQL_PASSWORD');
-    private $database = getenv('CONC_MYSQL_DATABASE');
-
     public $connection;
 
     // get the database connection
     public function getConnection(){
+        $host = getenv('CONN_URI');
+        $username = getenv('CONC_MYSQL_USER');
+        $password = getenv('CONC_MYSQL_PASSWORD');
+        $database = getenv('CONC_MYSQL_DATABASE');
 
         $this->connection = null;
 
         try{
-            $this->connection = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database, $this->username, $this->password);
+            $this->connection = new PDO("mysql:host=" . $host . ";dbname=" . $database, $username, $password);
             $this->connection->exec("set names utf8");
         }catch(PDOException $exception){
             echo "Error: " . $exception->getMessage();

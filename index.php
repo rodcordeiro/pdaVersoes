@@ -9,6 +9,7 @@
     include_once './db/db.class.php';
     include_once './controllers/controller.php';
     $db = new Database();
+    $conn = $db->getConnection();
     $controller = new Controller($db);
     $versions = $controller->read();
 
