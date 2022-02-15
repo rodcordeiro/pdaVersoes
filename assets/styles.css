@@ -19,18 +19,18 @@ body {
   justify-content: center;
   align-items: center;
 }
-form{
+form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   padding: 5px 10px;
 }
-form input[type="text"]{
+form input[type="text"] {
   padding: 5px 10px;
   width: 100%;
 }
-form input[type="submit"]{
+form input[type="submit"] {
   padding: 10px;
   width: 100%;
   background-color: #006;
@@ -38,10 +38,10 @@ form input[type="submit"]{
   font-size: 16px;
   font-weight: lighter;
   border-radius: 5px;
-  border:none;
+  border: none;
   outline: none;
 }
-form input[type="submit"]:hover{
+form input[type="submit"]:hover {
   background-color: #00a;
 }
 .data_container {
@@ -64,7 +64,7 @@ form input[type="submit"]:hover{
   font-size: 24px;
   padding: 5px;
 }
-.card h3 i {
+.card p > .version {
   font-size: 14px;
   color: #930000;
 }
@@ -75,7 +75,6 @@ form input[type="submit"]:hover{
 .card p span {
   font-family: "Courier New", Courier, monospace;
 }
-
 
 @media screen and (max-width: 768px) {
   body {
@@ -89,5 +88,4 @@ form input[type="submit"]:hover{
     height: auto;
     width: 100%;
   }
-  
 }

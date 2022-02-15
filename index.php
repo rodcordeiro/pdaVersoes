@@ -52,9 +52,9 @@ if(isset($_POST["save"])){
         ?> 
         <div class="card" onClick='replaceFormData("<?php echo $sistema['sistema'];?>","<?php echo $sistema['versao'];?>","<?php echo $sistema['cliente'];?>",<?php echo $sistema['id_sistema'];?>,<?php echo $sistema['id'];?>)'>
             <h3>
-            <?php echo $sistema['sistema'];?> <i>v<?php echo $sistema['versao'];?></i>
+            <?php echo $sistema['sistema'];?> 
             </h3>
-            <p><i>#<?php echo $sistema['id_sistema']?></i> <span class="cliente"><?php echo $sistema['cliente'];?></span></p>
+            <p><i class='version'>v<?php echo $sistema['versao'];?></i><i>#<?php echo $sistema['id_sistema']?></i> <span class="cliente"><?php echo $sistema['cliente'];?></span></p>
         </div>
         <?php } ?>
 <!-- 
