@@ -33,7 +33,7 @@ class Controller{
     }
     //R
     public function read(){
-        $query = "SELECT * FROM `" . $this->table_name . "`;";
+        $query = "SELECT * FROM `" . $this->table_name . "` ORDER BY `cliente` ASC;";
         $stmt = $this->connection->prepare($query);
 
         $stmt->execute();
@@ -44,7 +44,7 @@ class Controller{
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
           extract($row);
           $p = array(
-            "id" => $id_sistema,
+            "id" => $id,
             "id_sistema" => $id_sistema,
             "sistema" => $sistema,
             "cliente" => $cliente,
@@ -59,6 +59,7 @@ class Controller{
     //U
     public function update(){
       $query = "UPDATE `" . $this->table_name . "` SET `id_sistema`='". $this->id_sistema."',`sistema` = '".$this->sistema."',`cliente` = '".$this->cliente."',`versao` = '".$this->versao."' WHERE `id`='". $this->id."' ;";
+      
       $stmt = $this->connection->prepare($query);
       try{
         $stmt->execute();

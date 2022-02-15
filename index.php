@@ -1,3 +1,25 @@
+<?php
+include_once './db/db.class.php';
+include_once './controllers/controller.php';
+$db = new Database();
+$conn = $db->getConnection();
+$controller = new Controller($conn);
+$versions = $controller->read();
+
+if(isset($_POST["save"])){
+    $controller->id_sistema = $_POST["idSistema"];
+    $controller->sistema = $_POST["nomeSistema"];
+    $controller->cliente = $_POST["clienteSistema"];
+    $controller->versao = $_POST["versaoSistema"];
+    if(isset($_GET['update'])){
+        $controller->id = $_POST["id"];
+        $controller->update();
+    } else {
+        $controller->create();
+    }
+    header("Location: ./");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,28 +27,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDA | Controle de versões</title>
-    <?php
-    include_once './db/db.class.php';
-    include_once './controllers/controller.php';
-    $db = new Database();
-    $conn = $db->getConnection();
-    $controller = new Controller($conn);
-    $versions = $controller->read();
-
-    if(isset($_POST["save"])){
-        $controller->id_sistema = $_POST["idSistema"];
-        $controller->sistema = $_POST["nomeSistema"];
-        $controller->cliente = $_POST["clienteSistema"];
-        $controller->versao = $_POST["versaoSistema"];
-        if(isset($_GET['update'])){
-            $controller->id = $_POST["id"];
-            $controller->update();
-        } else {
-            $controller->create();
-        }
-        // header("Location: index.php");
-    }
-    ?>
     <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
@@ -52,9 +52,9 @@
         ?> 
         <div class="card" onClick='replaceFormData("<?php echo $sistema['sistema'];?>","<?php echo $sistema['versao'];?>","<?php echo $sistema['cliente'];?>",<?php echo $sistema['id_sistema'];?>,<?php echo $sistema['id'];?>)'>
             <h3>
-            <?php echo $sistema['sistema'];?> <i>#<?php echo $sistema['id_sistema']?></i>
+            <?php echo $sistema['sistema'];?> <i>v<?php echo $sistema['versao'];?></i>
             </h3>
-            <p><i>v<?php echo $sistema['versao'];?></i> <span class="cliente"><?php echo $sistema['cliente'];?></span></p>
+            <p><i>#<?php echo $sistema['id_sistema']?></i> <span class="cliente"><?php echo $sistema['cliente'];?></span></p>
         </div>
         <?php } ?>
 <!-- 
