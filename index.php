@@ -54,7 +54,7 @@ if(isset($_POST["save"])){
             <h3>
             <?php echo $sistema['sistema'];?> 
             </h3>
-            <p><i class='version'>v<?php echo $sistema['versao'];?></i><i>#<?php echo $sistema['id_sistema']?></i> <span class="cliente"><?php echo $sistema['cliente'];?></span></p>
+            <p><span class='version'>v<?php echo $sistema['versao'];?></span> <i>#<?php echo $sistema['id_sistema']?></i> <span class="cliente"><?php echo $sistema['cliente'];?></span></p>
         </div>
         <?php } ?>
 <!-- 
