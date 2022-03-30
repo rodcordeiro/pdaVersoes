@@ -22,9 +22,10 @@ $controller->versao = $data->versaoSistema;
 
 try {
     $system = $controller->create();
-    echo "<br>system" . $system;
+    echo "<br>system";
     print_r($system);
     $message = array('id' => $system);
+    http_response_code(201);
     echo json_encode($message);
 } catch (Exception $e) {
     echo 'Exceção capturada: ',  $e->getMessage(), "\n";
