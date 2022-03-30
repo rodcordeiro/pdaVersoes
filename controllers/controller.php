@@ -70,5 +70,31 @@ class Controller{
     }
     //D
     public function delete(){}
+    //R
+    public function findById($id){
+      $query = "SELECT * FROM `" . $this->table_name . "` WHERE `id` = '".$id."' ORDER BY `cliente` ASC;";
+      $stmt = $this->connection->prepare($query);
+
+      $stmt->execute();
+      $count = $stmt->rowCount();
+      
+      $result = array();
+      
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+        $p = array(
+          "id" => $id,
+          "id_sistema" => $id_sistema,
+          "sistema" => $sistema,
+          "cliente" => $cliente,
+          "versao" => $versao,
+          "createdAt" => $createdAt, 
+          "updatedAt" => $updatedAt,
+        );
+        array_push($result, $p);
+      }
+      return $result;
+  }
+  
 }
 ?>
