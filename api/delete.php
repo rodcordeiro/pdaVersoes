@@ -1,7 +1,7 @@
 <?php
 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: PUT,PATCH");
+header("Access-Control-Allow-Methods: DELETE");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
@@ -15,14 +15,10 @@ $controller = new Controller($connection);
 
 $data = json_decode(file_get_contents("php://input"));
 
-$controller->id_sistema = $data->idSistema;
-$controller->sistema = $data->nomeSistema;
-$controller->cliente = $data->clienteSistema;
-$controller->versao = $data->versaoSistema;
 $controller->id = $data->id;
 
-if ($controller->update()) {
-    $message = array('message' => 'System updated');
+if ($controller->delete()) {
+    $message = array('message' => 'System deleted');
     echo json_encode($message);
 } else {
     $message = array('message' => 'Unable to update the system data');
