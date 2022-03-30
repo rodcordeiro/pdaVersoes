@@ -22,7 +22,7 @@ $controller->versao = $data->versaoSistema;
 
 try {
     $system = $controller->create();
-    echo "<br>system" + $system;
+    echo "<br>system" . $system;
     print_r($system);
     $message = array('id' => $system);
     echo json_encode($message);

@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: DELETE");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once '../config/dbclass.php';
+include_once '../db/db.class.php';
 include_once '../controllers/controller.php';
 
 $dbclass = new Database();

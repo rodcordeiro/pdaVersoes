@@ -33,6 +33,9 @@ class Controller
       print_r($stmt);
       echo "<br/>result";
       print_r($result);
+      $sistema = $stmt->fetchone();
+      echo "<br/>sistema";
+      print_r($sistema);
     } catch (PDOException $exception) {
       echo "Error: " . $exception->getMessage();
     }

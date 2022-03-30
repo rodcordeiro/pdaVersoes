@@ -15,10 +15,18 @@ $controller = new Controller($connection);
 
 $data = json_decode(file_get_contents("php://input"));
 
-$controller->id_sistema = $data->idSistema;
-$controller->sistema = $data->nomeSistema;
-$controller->cliente = $data->clienteSistema;
-$controller->versao = $data->versaoSistema;
+if (isset($data->idSistema)) {
+    $controller->id_sistema = $data->idSistema;
+}
+if (isset($data->nomeSistema)) {
+    $controller->sistema = $data->nomeSistema;
+}
+if (isset($data->clienteSistema)) {
+    $controller->cliente = $data->clienteSistema;
+}
+if (isset($data->versaoSistema)) {
+    $controller->versao = $data->versaoSistema;
+}
 $controller->id = $data->id;
 
 if ($controller->update()) {
