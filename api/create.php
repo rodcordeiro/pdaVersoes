@@ -22,8 +22,7 @@ $controller->versao = $data->versaoSistema;
 
 try{
     $system = $controller->create();
-    print_r($system);
-    $message = array('message' => 'System created');
+    $message = array('id' => $system);
     echo json_encode($message);
 } catch(Exception $e){
     echo 'Exceção capturada: ',  $e->getMessage(), "\n";

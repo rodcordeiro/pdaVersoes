@@ -32,8 +32,6 @@ class Controller
     } catch (PDOException $exception) {
       echo "Error: " . $exception->getMessage();
     }
-    print_r($stmt);
-    print_r($result);
     return $result;
   }
   //R

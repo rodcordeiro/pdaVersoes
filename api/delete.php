@@ -14,7 +14,7 @@ $connection = $dbclass->getConnection();
 $controller = new Controller($connection);
 
 $data = json_decode(file_get_contents("php://input"));
-
+print_r($data);
 $controller->id = $data->id;
 
 if ($controller->delete()) {
