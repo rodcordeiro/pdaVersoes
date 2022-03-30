@@ -29,17 +29,12 @@ class Controller
     $stmt = $this->connection->prepare($query);
     try {
       $result = $stmt->execute();
-      echo "stmt";
-      print_r($stmt);
-      echo "<br/>result";
-      print_r($result);
-      $sistema = $stmt->fetch();
-      echo "<br/>sistema";
-      print_r($sistema);
+      
+      
     } catch (PDOException $exception) {
       echo "Error: " . $exception->getMessage();
     }
-    return $result;
+    return $stmt;
   }
   //R
   public function read()
@@ -71,17 +66,17 @@ class Controller
   public function update()
   {
     $query = "UPDATE `" . $this->table_name . "` SET";
-    if (isset($this->id_sistema)) {
-      $query = $query . "`id_sistema`='" . $this->id_sistema . "'";
+    if(isset($this->id_sistema)){
+      $query = $query . "`id_sistema`='" . $this->id_sistema ."'";
     }
-    if (isset($this->sistema)) {
+    if(isset($this->sistema)){
       $query = $query . ", `sistema` = '" . $this->sistema . "'";
     }
-    if (isset($this->cliente)) {
+    if(isset($this->cliente)){
       $query = $query . "',`cliente` = '" . $this->cliente  . "'";
     }
-
-    if (isset($this->versao)) {
+    
+    if(isset($this->versao)){
       $query = $query . "',`versao` = '" . $this->versao  . "'";
     }
 
