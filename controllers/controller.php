@@ -25,11 +25,14 @@ class Controller{
       $query = "INSERT INTO `" . $this->table_name . "`(`id_sistema`,`sistema`,`cliente`,`versao`) VALUES ('". $this->id_sistema."','".$this->sistema."','".$this->cliente."','".$this->versao."');";
       $stmt = $this->connection->prepare($query);
       try{
-        $stmt->execute();
+        $result = $stmt->execute();
+        
       }catch(PDOException $exception){
         echo "Error: " . $exception->getMessage();
       }
-      return $stmt;
+      print_r($stmt);
+      print_r($result);
+      return $result;
     }
     //R
     public function read(){
@@ -97,4 +100,3 @@ class Controller{
   }
   
 }
-?>
