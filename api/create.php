@@ -20,10 +20,12 @@ $controller->sistema = $data->nomeSistema;
 $controller->cliente = $data->clienteSistema;
 $controller->versao = $data->versaoSistema;
 
-try{
+try {
     $system = $controller->create();
+    echo "<br>system" + $system;
+    print_r($system);
     $message = array('id' => $system);
     echo json_encode($message);
-} catch(Exception $e){
+} catch (Exception $e) {
     echo 'Exceção capturada: ',  $e->getMessage(), "\n";
 }

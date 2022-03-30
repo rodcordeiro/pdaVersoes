@@ -29,6 +29,10 @@ class Controller
     $stmt = $this->connection->prepare($query);
     try {
       $result = $stmt->execute();
+      echo "stmt";
+      print_r($stmt);
+      echo "<br/>result";
+      print_r($result);
     } catch (PDOException $exception) {
       echo "Error: " . $exception->getMessage();
     }
