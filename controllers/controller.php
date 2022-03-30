@@ -65,28 +65,12 @@ class Controller
   //U
   public function update()
   {
-    $query = "UPDATE `" . $this->table_name . "` SET";
-    if(isset($this->id_sistema)){
-      $query = $query . "`id_sistema`='" . $this->id_sistema ."'";
-    }
-    if(isset($this->sistema)){
-      $query = $query . ", `sistema` = '" . $this->sistema . "'";
-    }
-    if(isset($this->cliente)){
-      $query = $query . "',`cliente` = '" . $this->cliente  . "'";
-    }
-    
-    if(isset($this->versao)){
-      $query = $query . "',`versao` = '" . $this->versao  . "'";
-    }
-
-    // "',`versao` = '" . $this->versao . "'
-    $query = $query .  " WHERE `id`='" . $this->id . "' ;";
+    $query = "UPDATE `" . $this->table_name . "` SET `id_sistema`='" . $this->id_sistema ."', `sistema` = '" . $this->sistema . "',`cliente` = '" . $this->cliente  . "',`versao` = '" . $this->versao  . "' WHERE `id`='" . $this->id . "' ;";
     $stmt = $this->connection->prepare($query);
     try {
       $stmt->execute();
     } catch (PDOException $exception) {
-      echo "Error: " . $exception->getMessage();
+      throw new Exception($exception->getMessage());
     }
     return $stmt;
   }

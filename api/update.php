@@ -15,24 +15,19 @@ $controller = new Controller($connection);
 
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->idSistema)) {
-    $controller->id_sistema = $data->idSistema;
-}
-if (isset($data->nomeSistema)) {
-    $controller->sistema = $data->nomeSistema;
-}
-if (isset($data->clienteSistema)) {
-    $controller->cliente = $data->clienteSistema;
-}
-if (isset($data->versaoSistema)) {
-    $controller->versao = $data->versaoSistema;
-}
+$controller->id_sistema = $data->idSistema;
+$controller->sistema = $data->nomeSistema;
+$controller->cliente = $data->clienteSistema;
+$controller->versao = $data->versaoSistema;
+
 $controller->id = $data->id;
 
-if ($controller->update()) {
-    $message = array('message' => 'System updated');
+try {
+    $system = $controller->update();
+    $message = array('id' => $system);
+    http_response_code(200);
     echo json_encode($message);
-} else {
-    $message = array('message' => 'Unable to update the system data');
+} catch (Exception $e) {
+    $message = array('id' =>  $e->getMessage());
     echo json_encode($message);
 }
